@@ -13,7 +13,8 @@ class Video
      */
     public function SetUrl($url)
     {
-        $this->url = $url;
+        $jump_url = $this->CheckJump($url);
+        $this->url = $jump_url ? $jump_url : $url;
     }
 
     /**
@@ -31,6 +32,18 @@ class Video
      * @return array
      */
     public function GetPlayUrl(){
+        return false;
+    }
+
+    /**
+     * 检查跳转
+     * 获取跳转后的地址
+     */
+    protected function CheckJump($url){
+        $header = get_headers($url,true);
+        if (!empty($header['Location'])) {
+            return $header['Location'];
+        }
         return false;
     }
 }
