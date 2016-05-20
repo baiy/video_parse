@@ -1,0 +1,13 @@
+{
+    "name": "baiy/VideoParse",
+    "description": "获取各大视频网站视频独立播放地址和下载地址",
+    "require": {
+        "php": ">=5.4.0",
+        "mashape/unirest-php": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "VideoParse\\": "src/"
+        }
+    }
+}
