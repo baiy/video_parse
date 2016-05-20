@@ -31,7 +31,7 @@ class Flvcd
         $title = empty($m['title']) ? '' : trim($m['title']);
 
         if (empty($down_list) || empty($title)) {
-            return false;
+            return array();
         }
 
         return array(

@@ -14,7 +14,6 @@ class Video extends \VideoParse\Site\Video
     {
         $play_url = 'http://share.vrs.sohu.com/my/v.swf&topBar=1&id={id}&autoplay=false&from=page';
         $response = \Unirest\Request::get($this->url);
-        $html     = $response->body;
         preg_match("#vid: '(?<id>.*?)',#", $response->body, $m);
         if (!empty($m['id'])) {
             return array('swf' => str_replace('{id}', $m['id'], $play_url));
