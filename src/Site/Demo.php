@@ -29,22 +29,28 @@ class Demo
         ],
         'tvsohucom'   => [
             'name'            => '搜狐视频',
-            'url'             => ['http://my.tv.sohu.com/pl/9069658/83879705.shtml','http://tv.sohu.com/20160518/n450053769.shtml'],
+            'url'             => [
+                'http://my.tv.sohu.com/pl/9069658/83879705.shtml',
+                'http://tv.sohu.com/20160518/n450053769.shtml'
+            ],
             'class_namespace' => 'tvsohucom',
         ],
         'vzolcomcn'   => [
             'name'            => 'ZOL视频',
-            'url'             => ['http://zol.iqiyi.com.cn/video183889.html','http://v.zol.com.cn/video109402.html'],
+            'url'             => ['http://zol.iqiyi.com.cn/video183889.html', 'http://v.zol.com.cn/video109402.html'],
             'class_namespace' => 'vzolcomcn',
         ],
         'v17173com'   => [
             'name'            => '17173视频',
-            'url'             => ['http://v.17173.com/v_102_604/MzQxMTU2OTg.html','http://17173.tv.sohu.com/v_102_604/MTE2ODAwNDA.html'],
+            'url'             => [
+                'http://v.17173.com/v_102_604/MzQxMTU2OTg.html',
+                'http://17173.tv.sohu.com/v_102_604/MTE2ODAwNDA.html'
+            ],
             'class_namespace' => 'v17173com',
         ],
-        'wwwiqiyicom'   => [
+        'wwwiqiyicom' => [
             'name'            => '爱奇艺',
-            'url'             => ['http://www.iqiyi.com/v_19rro31oes.html','http://www.iqiyi.com/v_19rrifwg66.html'],
+            'url'             => ['http://www.iqiyi.com/v_19rro31oes.html', 'http://www.iqiyi.com/v_19rrifwg66.html'],
             'class_namespace' => 'wwwiqiyicom',
         ],
     ];
@@ -59,7 +65,7 @@ class Demo
     public function run($site_key)
     {
         $site = self::SITE_LISTS[$site_key];
-        $no = 1;
+        $no   = 1;
         foreach ($site['url'] as $value) {
             $this->execute($value, $site['name'], $site['class_namespace'], $no++);
         }
@@ -69,16 +75,16 @@ class Demo
     {
         $classname = '\\VideoParse\\Site\\' . $class_namespace . '\\video';
         $class     = new $classname();
-        $class->SetUrl($url);
+        $class->setUrl($url);
 
         // 代码
         $code = '```php' . "\n";
         $code .= '<?php' . "\n";
         $code .= 'require_once \'./vendor/autoload.php\';' . "\n";
         $code .= '$video = new ' . $classname . '();' . "\n";
-        $code .= '$video->SetUrl(\'' . $url . '\');' . "\n";
-        $code .= 'print_r($video->GetPlayUrl());' . "\n";
-        $code .= 'print_r($video->GetDownloadUrl());' . "\n";
+        $code .= '$video->setUrl(\'' . $url . '\');' . "\n";
+        $code .= 'print_r($video->getPlayUrl());' . "\n";
+        $code .= 'print_r($video->getDownloadUrl());' . "\n";
         $code .= '?>' . "\n";
         $code .= '```';
 
@@ -86,11 +92,11 @@ class Demo
         echo "\n--- 代码 ---\n";
         echo $code . "\n";
 
-        $r = $class->GetPlayUrl();
+        $r = $class->getPlayUrl();
         echo "\n--- 播放地址 ---\n";
         print_r($r);
 
-        $r = $class->GetDownloadUrl();
+        $r = $class->getDownloadUrl();
         if ($r === false) {
             echo "\n--- 暂时无法获取下载地址 ---\n";
         } else {

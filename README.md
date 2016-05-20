@@ -21,17 +21,17 @@ composer require baiy/VideoParse
 require_once 'vendor/autoload.php';
 // 56
 $video = new \VideoParse\Site\www56com\video();
-$video->SetUrl('http://www.56.com/w87/play_album-aid-14296502_vid-MTQxMDAxODE3.html');
+$video->setUrl('http://www.56.com/w87/play_album-aid-14296502_vid-MTQxMDAxODE3.html');
 echo "\n--- 播放地址 ---\n";
-print_r($video->GetPlayUrl());
+print_r($video->getPlayUrl());
 echo "\n--- 下载地址 ---\n";
-print_r($video->GetDownloadUrl());
+print_r($video->getDownloadUrl());
 
 // 优酷
 $video = new \VideoParse\Site\youku\video();
-$video->SetUrl('http://v.youku.com/v_show/id_XMTUzOTM5MjAxNg==.html');
+$video->setUrl('http://v.youku.com/v_show/id_XMTUzOTM5MjAxNg==.html');
 echo "\n--- 播放地址 ---\n";
-print_r($video->GetPlayUrl());
+print_r($video->getPlayUrl());
 ?>
 ```
 > 更新代码实例请运行根目录下的 `demo.php`

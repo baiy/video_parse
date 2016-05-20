@@ -8,9 +8,10 @@ class Video extends \VideoParse\Site\Video
 {
     /**
      * 获取下载地址
+     *
      * @param string $url 页面地址
      */
-    public function GetDownloadUrl()
+    public function getDownloadUrl()
     {
         return false;
     }
@@ -19,13 +20,14 @@ class Video extends \VideoParse\Site\Video
      * 获取播放地址
      * @return array
      */
-    public function GetPlayUrl()
+    public function getPlayUrl()
     {
         $response = \Unirest\Request::get($this->url);
         preg_match('#value=\'(?<url>.*?)\'><a id="v_slink_souce"#', $response->body, $m);
         if (!empty($m['url'])) {
-            return array('swf' => trim($m['url']));
+            return ['swf' => trim($m['url'])];
         }
+
         return false;
     }
 }

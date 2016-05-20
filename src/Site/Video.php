@@ -7,23 +7,42 @@ namespace VideoParse\Site;
 class Video
 {
     public $url;
+
     /**
      * 设置页面地址
+     *
      * @param string $url 页面地址
      */
-    public function SetUrl($url)
+    public function setUrl($url)
     {
-        $jump_url = $this->CheckJump($url);
+        $jump_url  = $this->checkJump($url);
         $this->url = $jump_url ? $jump_url : $url;
+    }
+
+    /**
+     * 检查跳转
+     * 获取跳转后的地址
+     */
+    protected function checkJump($url)
+    {
+        $header = get_headers($url, true);
+        if (!empty($header['Location'])) {
+            return $header['Location'];
+        }
+
+        return false;
     }
 
     /**
      * 获取下载地址
      * 默认采集flvcd数据
+     *
      * @param array
      */
-    public function GetDownloadUrl(){
+    public function getDownloadUrl()
+    {
         $flvcd = new \VideoParse\Vendor\Flvcd();
+
         return $flvcd->parse($this->url);
     }
 
@@ -31,19 +50,8 @@ class Video
      * 获取播放地址
      * @return array
      */
-    public function GetPlayUrl(){
-        return false;
-    }
-
-    /**
-     * 检查跳转
-     * 获取跳转后的地址
-     */
-    protected function CheckJump($url){
-        $header = get_headers($url,true);
-        if (!empty($header['Location'])) {
-            return $header['Location'];
-        }
+    public function getPlayUrl()
+    {
         return false;
     }
 }
