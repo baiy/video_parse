@@ -1,7 +1,4 @@
 <?php
-/**
- * 抓取56万视频
- */
 namespace VideoParse\Site\vzolcomcn;
 
 class Video extends \VideoParse\Site\Video

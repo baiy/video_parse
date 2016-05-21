@@ -1,7 +1,4 @@
 <?php
-/**
- * 抓取56万视频
- */
 namespace VideoParse\Site\wwwiqiyicom;
 
 class Video extends \VideoParse\Site\Video

@@ -1,7 +1,4 @@
 <?php
-/**
- * 抓取56万视频
- */
 namespace VideoParse\Site\xiyoucntvcn;
 
 class Video extends \VideoParse\Site\Video
