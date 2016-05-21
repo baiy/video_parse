@@ -1,6 +1,6 @@
 <?php
 /**
- * 视频抓取样式
+ * 视频抓取演示
  */
 namespace VideoParse\Site;
 
@@ -52,6 +52,30 @@ class Demo
             'name'            => '爱奇艺',
             'url'             => ['http://www.iqiyi.com/v_19rro31oes.html', 'http://www.iqiyi.com/v_19rrifwg66.html'],
             'class_namespace' => 'wwwiqiyicom',
+        ],
+        'wwwaipaicom' => [
+            'name'            => '爱拍原创',
+            'url'             => [
+                'http://www.aipai.com/c32/PTgoKSsqISdqJWQhLg.html',
+                'http://www.aipai.com/c31/PTgnJyomICJqJWQtKA.html'
+            ],
+            'class_namespace' => 'wwwaipaicom',
+        ],
+        'wwwletvcom'  => [
+            'name'            => '乐视',
+            'url'             => [
+                'http://www.le.com/ptv/vplay/623108.html',
+                'http://www.le.com/ptv/vplay/25469527.html'
+            ],
+            'class_namespace' => 'wwwletvcom',
+        ],
+        'wwwtudoucom' => [
+            'name'            => '土豆',
+            'url'             => [
+                'http://www.tudou.com/albumplay/HwVNXEUHedQ.html',
+                'http://www.tudou.com/albumplay/X6o-z0aK9sk/-Ffvobj-HwE.html'
+            ],
+            'class_namespace' => 'wwwtudoucom',
         ],
     ];
 

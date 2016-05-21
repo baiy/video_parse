@@ -8,4 +8,7 @@ $test = new \VideoParse\Site\Demo();
 // $test->run('tvsohucom');
 // $test->run('vzolcomcn');
 // $test->run('v17173com');
+//$test->run('wwwaipaicom');
+//$test->run('wwwletvcom');
+//$test->run('wwwtudoucom');
 $test->start();
