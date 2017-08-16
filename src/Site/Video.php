@@ -1,7 +1,8 @@
 <?php
 /**
- * 视频抓取基类
+ * 视频抓取基类.
  */
+
 namespace VideoParse\Site;
 
 class Video
@@ -15,7 +16,7 @@ class Video
      */
     public function setUrl($url)
     {
-        $jump_url  = $this->checkJump($url);
+        $jump_url = $this->checkJump($url);
         $this->url = $jump_url ? $jump_url : $url;
     }
 
@@ -35,7 +36,7 @@ class Video
 
     /**
      * 获取下载地址
-     * 默认采集flvcd数据
+     * 默认采集flvcd数据.
      *
      * @param array
      */
@@ -48,6 +49,7 @@ class Video
 
     /**
      * 获取播放地址
+     *
      * @return array
      */
     public function getPlayUrl()

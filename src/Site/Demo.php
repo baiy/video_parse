@@ -1,7 +1,8 @@
 <?php
 /**
- * 视频抓取演示
+ * 视频抓取演示.
  */
+
 namespace VideoParse\Site;
 
 class Demo
@@ -31,7 +32,7 @@ class Demo
             'name'            => '搜狐视频',
             'url'             => [
                 'http://my.tv.sohu.com/pl/9069658/83879705.shtml',
-                'http://tv.sohu.com/20160518/n450053769.shtml'
+                'http://tv.sohu.com/20160518/n450053769.shtml',
             ],
             'class_namespace' => 'tvsohucom',
         ],
@@ -44,7 +45,7 @@ class Demo
             'name'            => '17173视频',
             'url'             => [
                 'http://v.17173.com/v_102_604/MzQxMTU2OTg.html',
-                'http://17173.tv.sohu.com/v_102_604/MTE2ODAwNDA.html'
+                'http://17173.tv.sohu.com/v_102_604/MTE2ODAwNDA.html',
             ],
             'class_namespace' => 'v17173com',
         ],
@@ -57,7 +58,7 @@ class Demo
             'name'            => '爱拍原创',
             'url'             => [
                 'http://www.aipai.com/c32/PTgoKSsqISdqJWQhLg.html',
-                'http://www.aipai.com/c31/PTgnJyomICJqJWQtKA.html'
+                'http://www.aipai.com/c31/PTgnJyomICJqJWQtKA.html',
             ],
             'class_namespace' => 'wwwaipaicom',
         ],
@@ -65,7 +66,7 @@ class Demo
             'name'            => '乐视',
             'url'             => [
                 'http://www.le.com/ptv/vplay/623108.html',
-                'http://www.le.com/ptv/vplay/25469527.html'
+                'http://www.le.com/ptv/vplay/25469527.html',
             ],
             'class_namespace' => 'wwwletvcom',
         ],
@@ -73,7 +74,7 @@ class Demo
             'name'            => '土豆',
             'url'             => [
                 'http://www.tudou.com/albumplay/HwVNXEUHedQ.html',
-                'http://www.tudou.com/albumplay/X6o-z0aK9sk/-Ffvobj-HwE.html'
+                'http://www.tudou.com/albumplay/X6o-z0aK9sk/-Ffvobj-HwE.html',
             ],
             'class_namespace' => 'wwwtudoucom',
         ],
@@ -89,7 +90,7 @@ class Demo
     public function run($site_key)
     {
         $site = self::SITE_LISTS[$site_key];
-        $no   = 1;
+        $no = 1;
         foreach ($site['url'] as $value) {
             $this->execute($value, $site['name'], $site['class_namespace'], $no++);
         }
@@ -97,24 +98,24 @@ class Demo
 
     private function execute($url, $name, $class_namespace, $no)
     {
-        $classname = '\\VideoParse\\Site\\' . $class_namespace . '\\video';
-        $class     = new $classname();
+        $classname = '\\VideoParse\\Site\\'.$class_namespace.'\\video';
+        $class = new $classname();
         $class->setUrl($url);
 
         // 代码
-        $code = '```php' . "\n";
-        $code .= '<?php' . "\n";
-        $code .= 'require_once \'./vendor/autoload.php\';' . "\n";
-        $code .= '$video = new ' . $classname . '();' . "\n";
-        $code .= '$video->setUrl(\'' . $url . '\');' . "\n";
-        $code .= 'print_r($video->getPlayUrl());' . "\n";
-        $code .= 'print_r($video->getDownloadUrl());' . "\n";
-        $code .= '?>' . "\n";
+        $code = '```php'."\n";
+        $code .= '<?php'."\n";
+        $code .= 'require_once \'./vendor/autoload.php\';'."\n";
+        $code .= '$video = new '.$classname.'();'."\n";
+        $code .= '$video->setUrl(\''.$url.'\');'."\n";
+        $code .= 'print_r($video->getPlayUrl());'."\n";
+        $code .= 'print_r($video->getDownloadUrl());'."\n";
+        $code .= '?>'."\n";
         $code .= '```';
 
-        echo "========= 开始测试 " . $name . ($no != 1 ? $no : '') . " =========\n";
+        echo '========= 开始测试 '.$name.($no != 1 ? $no : '')." =========\n";
         echo "\n--- 代码 ---\n";
-        echo $code . "\n";
+        echo $code."\n";
 
         $r = $class->getPlayUrl();
         echo "\n--- 播放地址 ---\n";
@@ -127,6 +128,6 @@ class Demo
             echo "\n--- 下载地址 ---\n";
             print_r($r);
         }
-        echo "\n======== 结束测试 " . $name . ($no != 1 ? $no : '') . " =========\n\n\n\n\n";
+        echo "\n======== 结束测试 ".$name.($no != 1 ? $no : '')." =========\n\n\n\n\n";
     }
 }

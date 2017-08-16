@@ -1,11 +1,12 @@
 <?php
-namespace VideoParse\Site\wwwaipaicom;
 
+namespace VideoParse\Site\wwwaipaicom;
 
 class Video extends \VideoParse\Site\Video
 {
     /**
      * 获取播放地址
+     *
      * @return array
      */
     public function getPlayUrl()

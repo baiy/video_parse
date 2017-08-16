@@ -1,10 +1,12 @@
 <?php
+
 namespace VideoParse\Site\www56com;
 
 class Video extends \VideoParse\Site\Video
 {
     /**
      * 获取播放地址
+     *
      * @return array
      */
     public function getPlayUrl()
