@@ -1,4 +1,5 @@
 <?php
+
 namespace VideoParse\Site\youku;
 
 class Video extends \VideoParse\Site\Video
